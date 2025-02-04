@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- link font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Liter&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ivon link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style/main.css" />
+    <title>weather</title>
+  </head>
+  <body>
+    <div class="main">
+      <video autoplay loop muted playsinline>
+        <source id="source" type="video/mp4" />
+      </video>
+      <div class="main__all">
+        <div class="main__all__wether__info">
+          <div class="main__all__wether__info--search">
+            <input
+              type="text"
+              placeholder="Snow or sun? Search for your city!"
+              id="searchInput"
+              autocomplete="off"
+            />
+            <i class="fa-solid fa-location-dot"></i>
+            <button class="btn" id="btn">search</button>
+          </div>
+          <div class="main__all__wether__info--details" id="basic">
+            <span class="loader"></span>
+            <div class="main__all__wether__info--details--time" id="time"></div>
+            <div
+              class="main__all__wether__info--details--number"
+              id="number"
+            ></div>
+            <div class="main__all__wether__info--details--forcetimes">
+              <div
+                class="main__all__wether__info--details--forcetimes--days div"
+              >
+                <div class="titleicon">
+                  <i class="fa-solid fa-calendar-days"></i>
+                  <h4>7 days Forecast</h4>
+                </div>
+                <div class="content" id="days_content"></div>
+              </div>
+              <div
+                class="main__all__wether__info--details--forcetimes--hoursmoonsun div"
+              >
+                <div
+                  class="main__all__wether__info--details--forcetimes--hoursmoonsun--hour"
+                >
+                  <div class="titleicon">
+                    <i class="fa-solid fa-helicopter-symbol"></i>
+                    <h4>Hourly Forecast</h4>
+                  </div>
+                  <div class="info" id="hour"></div>
+                </div>
+
+                <div
+                  class="main__all__wether__info--details--forcetimes--hoursmoonsun--moonsun"
+                >
+                  <div class="titleicon">
+                    <i class="fa-solid fa-helicopter-symbol"></i>
+                    <h4>moon&sun</h4>
+                  </div>
+                  <div class="moonsun" id="sunmoon"></div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="main__all__wether__info--details--moreDetails"
+              id="moreDetaile"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./javascript/script.js"></script>
+  </body>
+</html>
