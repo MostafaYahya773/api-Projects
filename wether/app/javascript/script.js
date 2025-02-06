@@ -172,26 +172,28 @@ const showMoreInfo = (dataCurrent) => {
 const showDaysInfo = (data, timeUpdata) => {
   let box = ``;
   for (let i = 0; i < data.length; i++) {
-    data[0].date = 'Tue';
-    data[1].date = 'Wed';
-    data[2].date = 'Thu';
-    data[3].date = 'Fri';
-    data[4].date = 'Sat';
-    data[5].date = 'Sun';
-    data[6].date = 'Mon';
-    if (timeUpdata.slice(0, 11).trim() <= data[i].date) {
-      data[0].date = 'Today';
+    data[0].date = 'Sat';
+    data[1].date = 'Sun';
+    data[2].date = 'Mon';
+    data[3].date = 'Tue';
+    data[4].date = 'Wed';
+    data[5].date = 'Thu';
+    data[6].date = 'Fri';
+    if (data[i].date >= timeUpdata.slice(0, 11)) {
       box += `
       <p class='dayName'>${data[i].date}</p>
       <img width='60%' src="${data[i].day.condition.icon}" alt="Weather Icon">
-      <p class='temp'>${data[i].day.mintemp_c}</p>
+      <p class='temp'>${data[i].day.mintemp_c.toFixed(0)}</p>
       <p class='temp_icon'>
-      <i style='left:${data[i].day.avgtemp_c}%' class="fa-solid fa-circle temp_icon--citcle"></i>
+      <i style='left:${
+        data[i].day.avgtemp_c
+      }%' class="fa-solid fa-circle temp_icon--citcle"></i>
       </p>
-      <p class='temp'>${data[i].day.maxtemp_c}</p>
+      <p class='temp'>${data[i].day.maxtemp_c.toFixed(0)}</p>
       `;
     }
   }
+
   days.innerHTML = box;
 };
 
@@ -284,6 +286,8 @@ const backgroundAnimation = (data) => {
     videoSrc = './videos/rain.mp4';
   } else if (/sunny/i.test(data)) {
     videoSrc = './videos/sunny.mp4';
+  } else if (/Thunderstorm|Thunder|storm/i.test(data)) {
+    videoSrc = './videos/barq.mp4';
   }
   source.setAttribute('src', videoSrc);
   video.load();
