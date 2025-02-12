@@ -13,7 +13,7 @@ const source = document.querySelector('#source');
 
 async function getLocation(lat, lon) {
   let data = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=0444df19ac594d72aae105415252801&q=${lat},${lon}&days=7&aqi=no&alerts=no`
+    `https://api.weatherapi.com/v1/forecast.json?key=20fa392ce0fa402c9b4203041251202&q=${lat},${lon}&days=7&aqi=no&alerts=no`
   );
   let result = await data.json();
   loader.style.display = 'none';
@@ -29,7 +29,7 @@ async function getLocation(lat, lon) {
 
 async function getData(q) {
   let data = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=0444df19ac594d72aae105415252801&q=${q}&days=7&aqi=no&alerts=no`
+    `http://api.weatherapi.com/v1/forecast.json?key=20fa392ce0fa402c9b4203041251202&q=${q}&days=7&aqi=no&alerts=no`
   );
   let result = await data.json();
   showTimeInfo(result.current.last_updated);
@@ -41,6 +41,7 @@ async function getData(q) {
   backgroundAnimation(result.current.condition.text);
   uvAnimation(result.current.uv);
   changePlaceholder(result.location.name, result.location.country);
+  console.log(result.current);
 }
 
 const showTimeInfo = (data) => {
@@ -172,15 +173,8 @@ const showMoreInfo = (dataCurrent) => {
 const showDaysInfo = (data, timeUpdata) => {
   let box = ``;
   for (let i = 0; i < data.length; i++) {
-    data[0].date = 'Sat';
-    data[1].date = 'Sun';
-    data[2].date = 'Mon';
-    data[3].date = 'Tue';
-    data[4].date = 'Wed';
-    data[5].date = 'Thu';
-    data[6].date = 'Fri';
-    if (data[i].date >= timeUpdata.slice(0, 11)) {
-      box += `
+    // if (data[i].date >= timeUpdata.slice(0, 11)) {
+    box += `
       <p class='dayName'>${data[i].date}</p>
       <img width='60%' src="${data[i].day.condition.icon}" alt="Weather Icon">
       <p class='temp'>${data[i].day.mintemp_c.toFixed(0)}</p>
@@ -191,8 +185,8 @@ const showDaysInfo = (data, timeUpdata) => {
       </p>
       <p class='temp'>${data[i].day.maxtemp_c.toFixed(0)}</p>
       `;
-    }
   }
+  // }
 
   days.innerHTML = box;
 };
@@ -247,7 +241,7 @@ const showSunMoon = (data) => {
                     <div class="parent">
                       <img src="./imges/moonset.png" alt="" />
                       <div class="icon">
-                        <p>sunrise</p>
+                        <p>moonset</p>
                         <p class="time">${data[i].astro.moonset}</p>
                       </div>
                     </div>
