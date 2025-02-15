@@ -41,7 +41,6 @@ async function getData(q) {
   backgroundAnimation(result.current.condition.text);
   uvAnimation(result.current.uv);
   changePlaceholder(result.location.name, result.location.country);
-  console.log(result.current);
 }
 
 const showTimeInfo = (data) => {
