@@ -29,7 +29,7 @@ async function getLocation(lat, lon) {
 
 async function getData(q) {
   let data = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=20fa392ce0fa402c9b4203041251202&q=${q}&days=7&aqi=no&alerts=no`
+    `https://api.weatherapi.com/v1/forecast.json?key=20fa392ce0fa402c9b4203041251202&q=${q}&days=7&aqi=no&alerts=no`
   );
   let result = await data.json();
   showTimeInfo(result.current.last_updated);
